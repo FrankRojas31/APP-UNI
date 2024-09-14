@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NotFoundView from './components/module/NotFound/view/NotFoundView';
+import FormsFirst from './components/module/forms-first/view/forms-first';
+import SideBar from './components/module/Navigation/view/SideBar';
+import FormsBD from './components/module/forms-first/view/form-bd';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="*" element={<NotFoundView/>} />
+      <Route path="/" index element={<SideBar/>} />
+      <Route path="/Formulario" element={<FormsFirst/>}/>
+      <Route path="/FormularioBD" element={<FormsBD/>}/>
+      </Routes>
+      </BrowserRouter>
   );
-}
+};
 
 export default App;
